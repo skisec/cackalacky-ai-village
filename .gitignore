@@ -1,3 +1,7 @@
 .venv
 .vscode
 .env
+.DS_Store
+.python_version
+
+phishing_emails.csv
