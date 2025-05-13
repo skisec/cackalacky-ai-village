@@ -1,0 +1,56 @@
+# {{ technique.name }} ({{ technique.id }})
+
+## Description
+{{ technique.description }}
+{% if technique.parent_technique %}
+
+## Parent Technique
+- {{ technique.parent_technique.name }} ({{ technique.parent_technique.id }})
+{% endif %}
+{% if technique.sub_techniques %}
+
+## Sub-techniques
+{% for sub_tech in technique.sub_techniques %}
+- {{ sub_tech.name }} ({{ sub_tech.id }})
+{% endfor %}
+{% endif %}
+{% if technique.tactics %}
+
+## Tactics
+{% for tactic in technique.tactics %}
+- {{ tactic.name }} ({{ tactic.id }})
+{% endfor -%}
+{% endif %}
+{% if technique.related_groups %}
+
+## Related Groups
+{% for group in technique.related_groups %}
+- {{ group.name }} ({{ group.id }})
+{% endfor -%}
+{% endif %}
+{% if technique.mitigations %}
+
+## Mitigations
+{% for mit in technique.mitigations %}
+- {{ mit.name }} ({{ mit.id }})
+{% endfor -%}
+{% endif %}
+
+{% if technique.general_detection_text or technique.specific_detection_narratives -%}
+## Detection
+{% if technique.general_detection_text -%}
+{{ technique.general_detection_text }}
+{% endif %}
+
+{% if technique.specific_detection_narratives %}
+### Detailed Detection by Data Source/Component
+{% for detail in technique.specific_detection_narratives %}
+#### {{ detail.source_name }}{% if detail.source_id %} ({{ detail.source_id }}){% endif %}: 
+{{ detail.description }}
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+
+{% endif %}
+{% endif %}

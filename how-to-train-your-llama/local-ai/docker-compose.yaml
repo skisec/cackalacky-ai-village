@@ -1,0 +1,77 @@
+x-ollama: &service-ollama
+  image: ollama/ollama:latest
+  container_name: ollama
+  restart: unless-stopped
+  ports:
+    - 11434:11434
+  environment:
+    - OLLAMA_CONTEXT_LENGTH=8192
+  volumes:
+    - ollama_data:/root/.ollama
+  networks:
+    - ai_network
+x-openweb-ui: &service-openweb-ui
+  image: ghcr.io/open-webui/open-webui:main
+  container_name: open-webui
+  ports:
+    - "8080:8080"
+  volumes:
+    - open_webui_data:/app/backend/data
+  networks:
+    - ai_network
+services:
+  # --- Ollama Service Definitions ---
+  ollama-cpu:
+    <<: *service-ollama
+    profiles: ["cpu"]
+  ollama-gpu-nvidia:
+    profiles: ["gpu-nvidia"]
+    <<: *service-ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+  ollama-gpu-amd:
+    profiles: ["gpu-amd"]
+    <<: *service-ollama
+    image: ollama/ollama:rocm
+    environment:
+      - HSA_OVERRIDE_GFX_VERSION=11.0.0
+      - HIP_VISIBLE_DEVICES=0
+    privileged: true
+    devices:
+      - "/dev/kfd"
+      - "/dev/dri"
+    security_opt:
+      - seccomp:unconfined
+    cap_add:
+      - SYS_PTRACE
+    ipc: host
+    group_add:
+      - video
+
+  # --- OpenWebUI Service Definitions ---
+  open-webui-docker:
+    profiles: ["cpu", "gpu-nvidia", "gpu-amd"]
+    <<: *service-openweb-ui
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+  open-webui-local:
+    profiles: ["macos","gpu-amd-win"]
+    <<: *service-openweb-ui
+    environment:
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+
+volumes:
+  ollama_data: {}
+  open_webui_data: {}
+
+networks:
+  ai_network:
+    driver: bridge

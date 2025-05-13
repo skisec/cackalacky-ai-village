@@ -1,0 +1,20 @@
+# {{ group.name }} ({{ group.id }})
+
+{% if group.description -%}
+## Description
+{{ group.description }}
+{% endif %}
+
+{% if group.aliases -%}
+## Aliases
+{% for alias in group.aliases %}
+- {{ alias }}
+{% endfor %}
+{% endif %}
+
+{% if group.techniques_used %}
+## Techniques Used
+{% for tech in group.techniques_used %}
+- {{ tech.name }} ({{ tech.id }})
+{% endfor %}
+{% endif %}
