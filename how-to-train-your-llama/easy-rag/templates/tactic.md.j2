@@ -1,0 +1,9 @@
+# {{ tactic.name }} ({{ tactic.id }})
+
+## Description
+{{ tactic.description }}
+
+## Related Techniques
+{% for tech in tactic.related_techniques %}
+- {{ tech.name }} ({{ tech.id }})
+{% endfor %}
