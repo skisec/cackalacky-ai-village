@@ -5,3 +5,6 @@
 .python_version
 
 phishing_emails.csv
+emails.csv
+phishing.txt
+safe.txt
