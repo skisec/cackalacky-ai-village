@@ -22,9 +22,17 @@ This project implements a text classification system using embeddings generated 
 ## How to Run
 
 1. Ensure Ollama is installed and running on your system with the command: `ollama serve`
-2. Install the required Python packages: `pip install -r requirements.txt`
-3. Run the script: `python embeddings_classification.py`
-4. Open the provided URL in your web browser to access the Gradio interface.
+2. Install embedding models: 
+
+    ```bash
+    ollama pull nomic-embed-text
+    ollama pull mxbai-embed-large
+    ollama pull snowflake-arctic-embed
+    ```
+
+3. Install the required Python packages: `pip install -r requirements.txt`
+4. Run the script: `python embeddings_classification.py`
+5. Open the provided URL in your web browser to access the Gradio interface.
 
 ## Code Explanation
 
