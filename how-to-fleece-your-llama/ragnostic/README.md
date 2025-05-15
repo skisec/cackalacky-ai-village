@@ -11,6 +11,7 @@ Learning about RAG vulnerabilities. [Repo](https://github.com/mundruid/ragnostic
 - [Golden Girls RAG System](#golden-girls-rag-system)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
+    - [But what is RAG?](#but-what-is-rag)
   - [Setup Instructions](#setup-instructions)
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
@@ -43,6 +44,13 @@ In this application, you'll be working with a RAG system that has access to info
 2. Test these defenses by trying various queries and injection attempts
 3. Compare the effectiveness of different approaches
 4. Learn best practices for secure prompt engineering
+
+### But what is RAG?
+
+- text generation augmented by databases
+- LLM finds the most relevant data and uses it in its answer
+ 
+![alt text](RAG.png "RAG")
 
 ## Setup Instructions
 
