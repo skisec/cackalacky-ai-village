@@ -46,8 +46,7 @@ Ollama also supports Apple Silicon through the Metal API. The same general guida
 *For AMD GPUs*
 - [ROCm Drivers](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/)
 
->[!NOTE]
->ROCm on Windows is 
+
 ## Official Documentation
 
 For more in-depth information about the tools used in this setup, refer to their official documentation:

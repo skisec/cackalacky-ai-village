@@ -24,6 +24,7 @@ cd cackalacky-ai-village/how-to-train-your-llama/local-ai
 
 ## Deployment Modes
 Depending on your hardware setup, you can use one of the pre-defined docker profiles to spin up the services.
+
 ---
 
 ### CPU Only

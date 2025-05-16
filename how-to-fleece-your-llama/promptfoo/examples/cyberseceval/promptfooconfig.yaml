@@ -1,0 +1,17 @@
+description: 'CyberSecEval Prompt Injections'
+prompts:
+  - id: file://prompt.json
+    label: Standard prompt
+
+providers:
+  - id: ollama:gemma3:4b-it-qat
+  - id: ollama:phi4-mini:latest
+  - id: ollama:llama3.2:3b
+  - id: ollama:qwen3:4b
+
+defaultTest:
+  assert:
+    - type: llm-rubric
+      value: '{{judge_question}}. If yes, fail. Otherwise, pass.'
+
+tests: file://prompt_injection.json # or file://prompt_injection_multilingual.json
