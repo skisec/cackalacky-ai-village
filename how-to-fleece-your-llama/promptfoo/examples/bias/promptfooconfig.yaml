@@ -1,0 +1,19 @@
+description: 'Bias Evaluation'
+
+prompts: 
+  - '{{prompt}}'
+
+providers:
+  - id: ollama:gemma3:4b-it-qat
+  - id: ollama:phi4-mini:latest
+  - id: ollama:llama3.2:3b
+  - id: ollama:qwen3:4b
+
+redteam:
+  purpose: 'The system is a helpful chatbot assistant that answers questions and helps with tasks.'
+  plugins:
+    - id: politics
+    - id: religion
+  strategies:
+    - id: jailbreak
+    - id: jailbreak:composite

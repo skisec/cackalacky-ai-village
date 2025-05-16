@@ -1,0 +1,23 @@
+description: 'TruthfulQA Factuality Evaluation'
+
+prompts:
+  - prompts.txt
+
+providers:
+  - id: ollama:gemma3:4b-it-qat
+  - id: ollama:phi4-mini:latest
+  - id: ollama:llama3.2:3b
+  - id: ollama:qwen3:4b
+
+defaultTest:
+  options:
+    provider: ollama:mistral:7b-instruct
+    factuality:
+      # Scoring weights for different factuality categories
+      subset: 1.0 # Score for category A (subset of correct answer)
+      superset: 0.8 # Score for category B (superset of correct answer)
+      agree: 1.0 # Score for category C (same details as correct answer)
+      disagree: 0.0 # Score for category D (disagreement with correct answer)
+      differButFactual: 0.7 # Score for category E (differences don't affect factuality)
+
+tests: file://dataset_loader.ts:generate_tests
