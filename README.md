@@ -7,6 +7,7 @@ This repo includes all the demos for the CackalackyCon AI Vilage 2025.
 ### How to fleece your llaama
 
 - [🧩 Ragnostic](how-to-fleece-your-llama/ragnostic/README.md): RAG vulnerabilities and defenses
+- [🔍 Promptfoo](how-to-fleece-your-llama/promptfoo/README.md): red teaming scanner that generates reports
 
 ### How to train your llama
 
