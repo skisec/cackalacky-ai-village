@@ -2,6 +2,8 @@
 
 This repo includes all the demos for the CackalackyCon AI Vilage 2025.
 
+![alt text](./llama.png)
+
 ## Table of contents
 
 ### How to fleece your llaama
