@@ -32,20 +32,13 @@ This repository showcases the use of Promptfoo, an open-source command-line tool
 ### What is Promptfoo?
 Promptfoo is an open-source command-line tool designed for evaluating and red-teaming Large Language Models (LLMs) and LLM-enabled applications. It helps you systematically test your prompts, models, and configurations to ensure quality, safety, and reliability.
 
-### What Can You Evaluate?
-Promptfoo allows for various types of evaluations, including:
-*   **Bias Testing:** Identify potential political, religious, or other biases in model responses.
-*   **Factuality Checking:** Measure how accurately an LLM's response aligns with established facts.
-*   **Red Teaming:** Probe models for vulnerabilities, security flaws, and unsafe outputs using various plugins and strategies.
-
-This repository provides examples for each of these evaluation types.
 
 ## Prerequisites
 
 To run the examples in this repository, you will need:
-- [Docker](https://docs.docker.com/get-started/get-docker/)
 - [Ollama](https://ollama.com/) (for serving the models to be tested)
 - [Node.js 18 or newer](https://nodejs.org/en/download/) (for running Promptfoo CLI)
+- [Docker](https://docs.docker.com/get-started/get-docker/) (optional, for sharing and storing evaluation results)
 
 ## Setup and Usage
 

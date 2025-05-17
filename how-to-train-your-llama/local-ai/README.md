@@ -8,6 +8,8 @@ This guide explains how to set up **Ollama** (a tool for running large language 
   - [Overview](#overview)
     - [What is Ollama?](#what-is-ollama)
     - [What is OpenWebUI?](#what-is-openwebui)
+    - [Understanding Ollama Quantization](#understanding-ollama-quantization)
+    - [Understanding Quantization Types](#understanding-quantization-types)
     - [Why Run LLMs Locally?](#why-run-llms-locally)
   - [Prerequisites](#prerequisites)
     - [Hardware Requirements](#hardware-requirements)
@@ -43,6 +45,46 @@ Ollama is a tool that simplifies running open-source large language models local
 
 ### What is OpenWebUI?
 OpenWebUI is a user-friendly, extensible web interface for interacting with various LLMs, including those served by Ollama. It provides a chat interface, model management capabilities, RAG (Retrieval Augmented Generation) features, and more.
+
+### Understanding Ollama Quantization
+
+Model quantization is a process that reduces the precision of the numbers used to represent a model's weights, which can significantly decrease the model's size and improve inference speed, often with a manageable trade-off in performance. Ollama supports various quantization methods, each offering different balances between size, speed, and quality.
+
+| Quant Type | Description                               | Notes                                         |
+|------------|-------------------------------------------|-----------------------------------------------|
+| **Old Quant Types (Legacy)** |||
+| `Q4_0`     | Small, very high quality loss             | Legacy, prefer using `Q3_K_M`                 |
+| `Q4_1`     | Small, substantial quality loss           | Legacy, prefer using `Q3_K_L`                 |
+| `Q5_0`     | Medium, balanced quality                  | Legacy, prefer using `Q4_K_M`                 |
+| `Q5_1`     | Medium, low quality loss                  | Legacy, prefer using `Q5_K_M`                 |
+| **New Quant Types** |||
+| `Q2_K`     | Smallest, extreme quality loss            | Not recommended                               |
+| `Q3_K`     | (Alias for `Q3_K_M`) Very small, very high quality loss | Alias for `Q3_K_M`                            |
+| `Q3_K_S`   | Very small, very high quality loss        |                                               |
+| `Q3_K_M`   | Very small, very high quality loss        |                                               |
+| `Q3_K_L`   | Small, substantial quality loss           |                                               |
+| `Q4_K`     | (Alias for `Q4_K_M`) Medium, balanced quality | Alias for `Q4_K_M`                            |
+| `Q4_K_S`   | Small, significant quality loss           |                                               |
+| `Q4_K_M`   | Medium, balanced quality                  | **Recommended**                               |
+| `Q5_K`     | (Alias for `Q5_K_M`) Large, very low quality loss | Alias for `Q5_K_M`                            |
+| `Q5_K_S`   | Large, low quality loss                   | **Recommended**                               |
+| `Q5_K_M`   | Large, very low quality loss              | **Recommended**                               |
+| `Q6_K`     | Very large, extremely low quality loss    |                                               |
+| `Q8_0`     | Very large, extremely low quality loss    | Not recommended                               |
+| `F16`      | Extremely large, virtually no quality loss| Not recommended                               |
+| `F32`      | Absolutely huge, lossless                 | Not recommended                               |
+
+### Understanding Quantization Types
+
+Quantization is a process that reduces the precision of the numbers used to represent a model's weights, which can significantly decrease the model's size and improve inference speed, often with a manageable trade-off in performance.
+
+For more information about quantization methods, see the [Hugging Face documentation](https://huggingface.co/docs/transformers/quantization).
+
+Here are some popular quantization methods:
+
+* [GGUF](https://huggingface.co/docs/transformers/main/en/gguf)
+* [GPTQ](https://huggingface.co/docs/transformers/main/en/quantization/gptq)
+* [AWQ](https://huggingface.co/docs/transformers/main/en/quantization/awq)
 
 ### Why Run LLMs Locally?
 Running LLMs locally offers several advantages:
