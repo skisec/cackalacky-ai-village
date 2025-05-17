@@ -137,6 +137,11 @@ Clone the repository and navigate to the `local-ai` directory:
 git clone https://github.com/skisec/cackalacky-ai-village.git && \
 cd cackalacky-ai-village/how-to-train-your-llama/local-ai
 ```
+If you want to run this without cloning the entire repo of this presentation, you can use my [personal repository](https://github.com/skisec/local-ai-kit):
+```bash
+git clone https://github.com/skisec/local-ai-kit.get
+```
+
 
 ### 2. Deployment Modes
 Depending on your hardware setup, you can use one of the pre-defined docker profiles to spin up the services.
