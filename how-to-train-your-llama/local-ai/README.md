@@ -139,7 +139,7 @@ cd cackalacky-ai-village/how-to-train-your-llama/local-ai
 ```
 If you want to run this without cloning the entire repo of this presentation, you can use my [personal repository](https://github.com/skisec/local-ai-kit):
 ```bash
-git clone https://github.com/skisec/local-ai-kit.get
+git clone https://github.com/skisec/local-ai-kit.git
 ```
 
 
